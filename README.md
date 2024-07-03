@@ -1,6 +1,8 @@
 # EconMF [Under development] [No release yet]
 The largest and most complex economic system created using the Mineflow v3.3.0 for PMMP 5.
 
+**Note: If you want to edit the configurations, I recommend you first see the _econfig.yml_ example left in the repository**
+
 # Features
 - Easy to use either by commands or forms.
 - Configuration file that stores the data.
@@ -17,7 +19,15 @@ The largest and most complex economic system created using the Mineflow v3.3.0 f
 5. Enjoy it :).
 
 # Commands
-Soon...
+- /econ ~ Basic command of the EconMF.
+- /econ help ~ Discover the EconMF commands.
+- /econ bank ~ Open the form to use EconMF in a more interactive way (configurable).
+- /econ bal [user] ~ See your balance or the balance of others (configurable).
+- /econ pay <user> <amount> ~ Pay a player a specific amount of money (configurable).
+[OP Commands]
+- /econ give <user> <amount> ~ Give a player a specific amount of money.
+- /econ take <user> <amount> ~ Take a specific amount of money from a player.
+- /econ config ~ Change the default settings of the EconMF. Please find out what each part of the configuration is for before editing it.
 
 # For other Mineflow developers
 There are instructions in the file formfdevs.md if you want to use the system API ;).
