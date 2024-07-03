@@ -4,8 +4,10 @@ The largest and most complex economic system created using the Mineflow v3.3.0 f
 # Features
 - Easy to use either by commands or forms.
 - Configuration file that stores the data.
+- Completely custom configuration.
 - Interactive bank.
 - Same features of the Bedrock Economy or the defunct EconomyAPI.
+- Versatility for Mineflow developers.
 
 # Setup
 1. Install the latest version of Mineflow.
