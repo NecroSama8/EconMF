@@ -1,5 +1,5 @@
 # EconMF
-Economy system created using the Mineflow for PMMP 5.
+Economy system created using the Mineflow v3.3.0 for PMMP 5.
 
 # Features
 - Easy to use either by commands or forms.
