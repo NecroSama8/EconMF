@@ -1,0 +1,7 @@
+---
+default_join_money: 1000
+allow_offline_payments: "true"
+bank_form: "true"
+allow_balance_view: "true"
+op_commands: "true"
+...
