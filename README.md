@@ -10,7 +10,7 @@ The largest and most complex economic system created using the Mineflow v3.3.0 f
 - Versatility for Mineflow developers.
 
 # Setup
-1. Install the latest version of Mineflow.
+1. Install the latest version of Mineflow on your PMMP server.
 2. Import the json file into the directory: plugin data/Mineflow/imports.
 3. Import the recipes using the Mineflow interface.
 4. Use the "/econfig" command to create the EconMF configuration file.
