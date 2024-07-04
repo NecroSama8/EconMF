@@ -1,0 +1,2839 @@
+{
+    "name": "EconMF",
+    "author": "NecroMancer8104",
+    "detail": "Economy system made with Mineflow v3.3.0.",
+    "plugin_version": "3.3.0",
+    "recipes": [
+        {
+            "name": "main",
+            "group": "EconMF\/commands",
+            "plugin_version": "3.3.0",
+            "author": "NecroMancer8104",
+            "enabled": true,
+            "actions": [
+                {
+                    "id": "createConfig",
+                    "contents": [
+                        "econfig",
+                        "econfig"
+                    ]
+                },
+                {
+                    "id": "createConfig",
+                    "contents": [
+                        "money",
+                        "money"
+                    ]
+                },
+                {
+                    "id": "if",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{args.0}",
+                                    0,
+                                    "help"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "sendMessage",
+                                "contents": [
+                                    "target",
+                                    "§a[EconMF] - - - - - - - - - - - - - - - - - - - - "
+                                ]
+                            },
+                            {
+                                "id": "sendMessage",
+                                "contents": [
+                                    "target",
+                                    "§aWelcome to Pocketmine's most complex economy system!"
+                                ]
+                            },
+                            {
+                                "id": "sendMessage",
+                                "contents": [
+                                    "target",
+                                    "§a\/econ ~ Basic command"
+                                ]
+                            },
+                            {
+                                "id": "sendMessage",
+                                "contents": [
+                                    "target",
+                                    "§a\/econ help ~ Official EconMF guide ^-^"
+                                ]
+                            },
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "comparisonString",
+                                            "contents": [
+                                                "{econfig.bank_form}",
+                                                0,
+                                                "true"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "sendMessage",
+                                            "contents": [
+                                                "target",
+                                                "§a\/econ bank ~ Manage commands with a simple menu"
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "comparisonString",
+                                            "contents": [
+                                                "{econfig.allow_balance_view}",
+                                                0,
+                                                "true"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "sendMessage",
+                                            "contents": [
+                                                "target",
+                                                "§a\/econ bal [user] ~ See your money or other players' money"
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§a\/econ bal ~ See your money"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "sendMessage",
+                                "contents": [
+                                    "target",
+                                    "§a\/econ pay <user> <quantity> ~ Pay to a player a specific amount of money"
+                                ]
+                            },
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "comparisonString",
+                                            "contents": [
+                                                "{econfig.op_commands}",
+                                                0,
+                                                "true"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "if",
+                                            "contents": [
+                                                [
+                                                    {
+                                                        "id": "hasPermission",
+                                                        "contents": [
+                                                            "target",
+                                                            "econmf.op"
+                                                        ]
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "id": "group",
+                                                        "contents": [
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§a[§eOP§a] EconMF"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§a\/econ give <user> <amount> ~ Give money to a player"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§a\/econ take <user> <amount> ~ Take a player's money"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§e\/econ config ~ Edit EconMF Settings (can be dangerous)"
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        {
+                                            "id": "elseif",
+                                            "contents": [
+                                                [
+                                                    {
+                                                        "id": "isOp",
+                                                        "contents": [
+                                                            "target"
+                                                        ]
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "id": "group",
+                                                        "contents": [
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§a[§eOP§a] EconMF"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§a\/econ give <user> <amount> ~ Give money to a player"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§a\/econ take <user> <amount> ~ Take a player's money"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§e\/econ config ~ Edit EconMF Settings (can be dangerous)"
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "sendMessage",
+                                "contents": [
+                                    "target",
+                                    "§a- - - - - - - - - - - - - - - - - - - - - - - - - "
+                                ]
+                            },
+                            {
+                                "id": "exit",
+                                "contents": []
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "elseif",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{args.0}",
+                                    0,
+                                    "bal"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "existsListVariableKey",
+                                            "contents": [
+                                                "args",
+                                                "1",
+                                                true
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "if",
+                                            "contents": [
+                                                [
+                                                    {
+                                                        "id": "comparisonString",
+                                                        "contents": [
+                                                            "{econfig.allow_balance_view}",
+                                                            0,
+                                                            "true"
+                                                        ]
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "id": "if",
+                                                        "contents": [
+                                                            [
+                                                                {
+                                                                    "id": "existsConfig",
+                                                                    "contents": [
+                                                                        "money",
+                                                                        "{args.1}"
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            [
+                                                                {
+                                                                    "id": "sendMessage",
+                                                                    "contents": [
+                                                                        "target",
+                                                                        "§a{args.1}'s money: §2$§a{money.{args.1}}."
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "exit",
+                                                                    "contents": []
+                                                                }
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "else",
+                                                        "contents": [
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§cThere is no player named {args.1} in the database."
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "exit",
+                                                                "contents": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        {
+                                            "id": "else",
+                                            "contents": [
+                                                {
+                                                    "id": "sendMessage",
+                                                    "contents": [
+                                                        "target",
+                                                        "§cView other players balance is disabled on this server."
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "exit",
+                                                    "contents": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§aYour money: §2$§a{money.{target.name}}."
+                                        ]
+                                    },
+                                    {
+                                        "id": "exit",
+                                        "contents": []
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "elseif",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{args.0}",
+                                    0,
+                                    "pay"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "existsListVariableKey",
+                                            "contents": [
+                                                "args",
+                                                "1",
+                                                true
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "if",
+                                            "contents": [
+                                                [
+                                                    {
+                                                        "id": "existsConfig",
+                                                        "contents": [
+                                                            "money",
+                                                            "{args.1}"
+                                                        ]
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "id": "if",
+                                                        "contents": [
+                                                            [
+                                                                {
+                                                                    "id": "existsListVariableKey",
+                                                                    "contents": [
+                                                                        "args",
+                                                                        "2",
+                                                                        true
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            [
+                                                                {
+                                                                    "id": "createList",
+                                                                    "contents": [
+                                                                        "abc",
+                                                                        [
+                                                                            "a",
+                                                                            "b",
+                                                                            "c",
+                                                                            "d",
+                                                                            "e",
+                                                                            "f",
+                                                                            "g",
+                                                                            "h",
+                                                                            "i",
+                                                                            "j",
+                                                                            "k",
+                                                                            "l",
+                                                                            "m",
+                                                                            "n",
+                                                                            "ñ",
+                                                                            "o",
+                                                                            "p",
+                                                                            "q",
+                                                                            "r",
+                                                                            "s",
+                                                                            "t",
+                                                                            "u",
+                                                                            "v",
+                                                                            "w",
+                                                                            "x",
+                                                                            "y",
+                                                                            "z"
+                                                                        ],
+                                                                        true
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "createList",
+                                                                    "contents": [
+                                                                        "ABC",
+                                                                        [
+                                                                            "A",
+                                                                            "B",
+                                                                            "C",
+                                                                            "D",
+                                                                            "E",
+                                                                            "F",
+                                                                            "G",
+                                                                            "H",
+                                                                            "I",
+                                                                            "J",
+                                                                            "K",
+                                                                            "L",
+                                                                            "M",
+                                                                            "N",
+                                                                            "Ñ",
+                                                                            "O",
+                                                                            "P",
+                                                                            "Q",
+                                                                            "R",
+                                                                            "S",
+                                                                            "T",
+                                                                            "U",
+                                                                            "V",
+                                                                            "W",
+                                                                            "X",
+                                                                            "Y",
+                                                                            "Z"
+                                                                        ],
+                                                                        true
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "createList",
+                                                                    "contents": [
+                                                                        "special",
+                                                                        [
+                                                                            "\u0026",
+                                                                            "§",
+                                                                            "%",
+                                                                            "@",
+                                                                            "#",
+                                                                            "$",
+                                                                            "_",
+                                                                            "-",
+                                                                            ")",
+                                                                            "(",
+                                                                            "=",
+                                                                            "\"",
+                                                                            "*",
+                                                                            "'",
+                                                                            ":",
+                                                                            "\/",
+                                                                            "!",
+                                                                            "?",
+                                                                            "+",
+                                                                            "\\",
+                                                                            "<",
+                                                                            ">",
+                                                                            ";",
+                                                                            "}",
+                                                                            "{",
+                                                                            "]",
+                                                                            "[",
+                                                                            "`",
+                                                                            "×",
+                                                                            "°",
+                                                                            "¡",
+                                                                            "¿",
+                                                                            "~",
+                                                                            "^",
+                                                                            "¬",
+                                                                            "|"
+                                                                        ],
+                                                                        true
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "if",
+                                                                    "contents": [
+                                                                        [
+                                                                            {
+                                                                                "id": "comparisonString",
+                                                                                "contents": [
+                                                                                    "{args.2}",
+                                                                                    2,
+                                                                                    "{abc}"
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        [
+                                                                            {
+                                                                                "id": "group",
+                                                                                "contents": [
+                                                                                    {
+                                                                                        "id": "sendMessage",
+                                                                                        "contents": [
+                                                                                            "target",
+                                                                                            "§cPlease enter a valid amount."
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "id": "exit",
+                                                                                        "contents": []
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "if",
+                                                                    "contents": [
+                                                                        [
+                                                                            {
+                                                                                "id": "comparisonString",
+                                                                                "contents": [
+                                                                                    "{args.2}",
+                                                                                    2,
+                                                                                    "{ABC}"
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        [
+                                                                            {
+                                                                                "id": "group",
+                                                                                "contents": [
+                                                                                    {
+                                                                                        "id": "sendMessage",
+                                                                                        "contents": [
+                                                                                            "target",
+                                                                                            "§cPlease enter a valid amount."
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "id": "exit",
+                                                                                        "contents": []
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "if",
+                                                                    "contents": [
+                                                                        [
+                                                                            {
+                                                                                "id": "comparisonString",
+                                                                                "contents": [
+                                                                                    "{args.2}",
+                                                                                    2,
+                                                                                    "{special}"
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        [
+                                                                            {
+                                                                                "id": "group",
+                                                                                "contents": [
+                                                                                    {
+                                                                                        "id": "sendMessage",
+                                                                                        "contents": [
+                                                                                            "target",
+                                                                                            "§cPlease enter a valid amount."
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "id": "exit",
+                                                                                        "contents": []
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "if",
+                                                                    "contents": [
+                                                                        [
+                                                                            {
+                                                                                "id": "isPlayerOnlineByName",
+                                                                                "contents": [
+                                                                                    "{args.1}"
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        [
+                                                                            {
+                                                                                "id": "if",
+                                                                                "contents": [
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "comparisonNumber",
+                                                                                            "contents": [
+                                                                                                "{money.{target.name}}",
+                                                                                                4,
+                                                                                                "{args.2}"
+                                                                                            ]
+                                                                                        }
+                                                                                    ],
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "getPlayer",
+                                                                                            "contents": [
+                                                                                                "{args.1}",
+                                                                                                "player"
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "fourArithmeticOperations",
+                                                                                            "contents": [
+                                                                                                "{money.{target.name}}",
+                                                                                                1,
+                                                                                                "{args.2}",
+                                                                                                "newmoney"
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "fourArithmeticOperations",
+                                                                                            "contents": [
+                                                                                                "{args.2}",
+                                                                                                0,
+                                                                                                "{money.{args.1}}",
+                                                                                                "newrmoney"
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "setConfig",
+                                                                                            "contents": [
+                                                                                                "money",
+                                                                                                "{target.name}",
+                                                                                                "{newmoney}"
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "setConfig",
+                                                                                            "contents": [
+                                                                                                "money",
+                                                                                                "{args.1}",
+                                                                                                "{newrmoney}"
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "sendMessage",
+                                                                                            "contents": [
+                                                                                                "target",
+                                                                                                "§aYou have paid §2$§a{args.2} to {args.1} (§4-$§c{args.2}§a)"
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "sendMessage",
+                                                                                            "contents": [
+                                                                                                "player",
+                                                                                                "§a{target.name} paid you §2$§a{args.2} (§2+$§a{args.2})"
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "saveConfig",
+                                                                                            "contents": [
+                                                                                                "money"
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "save",
+                                                                                            "contents": []
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "exit",
+                                                                                            "contents": []
+                                                                                        }
+                                                                                    ]
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "id": "else",
+                                                                                "contents": [
+                                                                                    {
+                                                                                        "id": "sendMessage",
+                                                                                        "contents": [
+                                                                                            "target",
+                                                                                            "§cYou don't have enough money to make this transaction."
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "id": "exit",
+                                                                                        "contents": []
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "else",
+                                                                    "contents": [
+                                                                        {
+                                                                            "id": "if",
+                                                                            "contents": [
+                                                                                [
+                                                                                    {
+                                                                                        "id": "comparisonString",
+                                                                                        "contents": [
+                                                                                            "{econfig.allow_offline_payments}",
+                                                                                            0,
+                                                                                            "true"
+                                                                                        ]
+                                                                                    }
+                                                                                ],
+                                                                                [
+                                                                                    {
+                                                                                        "id": "if",
+                                                                                        "contents": [
+                                                                                            [
+                                                                                                {
+                                                                                                    "id": "comparisonNumber",
+                                                                                                    "contents": [
+                                                                                                        "{money.{target.name}}",
+                                                                                                        4,
+                                                                                                        "{args.2}"
+                                                                                                    ]
+                                                                                                }
+                                                                                            ],
+                                                                                            [
+                                                                                                {
+                                                                                                    "id": "fourArithmeticOperations",
+                                                                                                    "contents": [
+                                                                                                        "{money.{target.name}}",
+                                                                                                        1,
+                                                                                                        "{args.2}",
+                                                                                                        "newmoney"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": "fourArithmeticOperations",
+                                                                                                    "contents": [
+                                                                                                        "{args.2}",
+                                                                                                        0,
+                                                                                                        "{money.{args.1}}",
+                                                                                                        "newrmoney"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": "setConfig",
+                                                                                                    "contents": [
+                                                                                                        "money",
+                                                                                                        "{target.name}",
+                                                                                                        "{newmoney}"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": "setConfig",
+                                                                                                    "contents": [
+                                                                                                        "money",
+                                                                                                        "{args.1}",
+                                                                                                        "{newrmoney}"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": "sendMessage",
+                                                                                                    "contents": [
+                                                                                                        "target",
+                                                                                                        "§aYou have paid §2$§a{args.2} to {args.1} (§4-$§c{args.2}§a)"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": "saveConfig",
+                                                                                                    "contents": [
+                                                                                                        "money"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": "save",
+                                                                                                    "contents": []
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": "exit",
+                                                                                                    "contents": []
+                                                                                                }
+                                                                                            ]
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "id": "else",
+                                                                                        "contents": [
+                                                                                            {
+                                                                                                "id": "sendMessage",
+                                                                                                "contents": [
+                                                                                                    "target",
+                                                                                                    "§cYou don't have enough money to make this transaction."
+                                                                                                ]
+                                                                                            },
+                                                                                            {
+                                                                                                "id": "exit",
+                                                                                                "contents": []
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                ]
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": "else",
+                                                                            "contents": [
+                                                                                {
+                                                                                    "id": "sendMessage",
+                                                                                    "contents": [
+                                                                                        "target",
+                                                                                        "§cOffline payments are not supported on this server."
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": "exit",
+                                                                                    "contents": []
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "else",
+                                                        "contents": [
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§cUse: \/econ pay {args.1} <amount>"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "exit",
+                                                                "contents": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        {
+                                            "id": "else",
+                                            "contents": [
+                                                {
+                                                    "id": "sendMessage",
+                                                    "contents": [
+                                                        "target",
+                                                        "§cThere is no player named {args.1} in the database."
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "exit",
+                                                    "contents": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§cUse: \/econ pay <user> <amount>"
+                                        ]
+                                    },
+                                    {
+                                        "id": "exit",
+                                        "contents": []
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "elseif",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{args.0}",
+                                    0,
+                                    "give"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "isOp",
+                                            "contents": [
+                                                "target"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "if",
+                                            "contents": [
+                                                [
+                                                    {
+                                                        "id": "comparisonString",
+                                                        "contents": [
+                                                            "{econfig.op_commands}",
+                                                            0,
+                                                            "true"
+                                                        ]
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "id": "if",
+                                                        "contents": [
+                                                            [
+                                                                {
+                                                                    "id": "existsListVariableKey",
+                                                                    "contents": [
+                                                                        "args",
+                                                                        "1",
+                                                                        true
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            [
+                                                                {
+                                                                    "id": "if",
+                                                                    "contents": [
+                                                                        [
+                                                                            {
+                                                                                "id": "existsConfig",
+                                                                                "contents": [
+                                                                                    "money",
+                                                                                    "{args.1}"
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        [
+                                                                            {
+                                                                                "id": "if",
+                                                                                "contents": [
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "existsListVariableKey",
+                                                                                            "contents": [
+                                                                                                "args",
+                                                                                                "2",
+                                                                                                true
+                                                                                            ]
+                                                                                        }
+                                                                                    ],
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "if",
+                                                                                            "contents": [
+                                                                                                [
+                                                                                                    {
+                                                                                                        "id": "comparisonNumber",
+                                                                                                        "contents": [
+                                                                                                            "{args.2}",
+                                                                                                            0,
+                                                                                                            "{args.2}"
+                                                                                                        ]
+                                                                                                    }
+                                                                                                ],
+                                                                                                [
+                                                                                                    {
+                                                                                                        "id": "fourArithmeticOperations",
+                                                                                                        "contents": [
+                                                                                                            "{money.{args.1}}",
+                                                                                                            0,
+                                                                                                            "{args.2}",
+                                                                                                            "newmoney"
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "setConfig",
+                                                                                                        "contents": [
+                                                                                                            "money",
+                                                                                                            "{args.1}",
+                                                                                                            "{newmoney}"
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "if",
+                                                                                                        "contents": [
+                                                                                                            [
+                                                                                                                {
+                                                                                                                    "id": "isPlayerOnlineByName",
+                                                                                                                    "contents": [
+                                                                                                                        "{args.1}"
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            [
+                                                                                                                {
+                                                                                                                    "id": "getPlayer",
+                                                                                                                    "contents": [
+                                                                                                                        "{args.1}",
+                                                                                                                        "player"
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "sendMessage",
+                                                                                                                    "contents": [
+                                                                                                                        "player",
+                                                                                                                        "§a{target.name} gave you §2$§a{args.2}."
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "sendMessage",
+                                                                                                        "contents": [
+                                                                                                            "target",
+                                                                                                            "§aYou gave §2$§a{args.2} to {args.1}."
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "saveConfig",
+                                                                                                        "contents": [
+                                                                                                            "money"
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "save",
+                                                                                                        "contents": []
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "exit",
+                                                                                                        "contents": []
+                                                                                                    }
+                                                                                                ]
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "id": "else",
+                                                                                "contents": [
+                                                                                    {
+                                                                                        "id": "sendMessage",
+                                                                                        "contents": [
+                                                                                            "target",
+                                                                                            "§cUse: \/econ give {args.1} <amount>"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "id": "exit",
+                                                                                        "contents": []
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "else",
+                                                                    "contents": [
+                                                                        {
+                                                                            "id": "sendMessage",
+                                                                            "contents": [
+                                                                                "target",
+                                                                                "§cThere is no player with the name {args.1} in the database."
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": "exit",
+                                                                            "contents": []
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "else",
+                                                        "contents": [
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§cUse: \/econ give <user> <amount>"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "exit",
+                                                                "contents": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        {
+                                            "id": "else",
+                                            "contents": [
+                                                {
+                                                    "id": "sendMessage",
+                                                    "contents": [
+                                                        "target",
+                                                        "§cOperator commands are disabled on this server."
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "exit",
+                                                    "contents": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§cYou do not have permission to use this command."
+                                        ]
+                                    },
+                                    {
+                                        "id": "exit",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "hasPermission",
+                                            "contents": [
+                                                "target",
+                                                "econmf.op"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "if",
+                                            "contents": [
+                                                [
+                                                    {
+                                                        "id": "comparisonString",
+                                                        "contents": [
+                                                            "{econfig.op_commands}",
+                                                            0,
+                                                            "true"
+                                                        ]
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "id": "if",
+                                                        "contents": [
+                                                            [
+                                                                {
+                                                                    "id": "existsListVariableKey",
+                                                                    "contents": [
+                                                                        "args",
+                                                                        "1",
+                                                                        true
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            [
+                                                                {
+                                                                    "id": "if",
+                                                                    "contents": [
+                                                                        [
+                                                                            {
+                                                                                "id": "existsConfig",
+                                                                                "contents": [
+                                                                                    "money",
+                                                                                    "{args.1}"
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        [
+                                                                            {
+                                                                                "id": "if",
+                                                                                "contents": [
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "existsListVariableKey",
+                                                                                            "contents": [
+                                                                                                "args",
+                                                                                                "2",
+                                                                                                true
+                                                                                            ]
+                                                                                        }
+                                                                                    ],
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "if",
+                                                                                            "contents": [
+                                                                                                [
+                                                                                                    {
+                                                                                                        "id": "comparisonNumber",
+                                                                                                        "contents": [
+                                                                                                            "{args.2}",
+                                                                                                            0,
+                                                                                                            "{args.2}"
+                                                                                                        ]
+                                                                                                    }
+                                                                                                ],
+                                                                                                [
+                                                                                                    {
+                                                                                                        "id": "fourArithmeticOperations",
+                                                                                                        "contents": [
+                                                                                                            "{money.{args.1}}",
+                                                                                                            0,
+                                                                                                            "{args.2}",
+                                                                                                            "newmoney"
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "setConfig",
+                                                                                                        "contents": [
+                                                                                                            "money",
+                                                                                                            "{args.1}",
+                                                                                                            "{newmoney}"
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "if",
+                                                                                                        "contents": [
+                                                                                                            [
+                                                                                                                {
+                                                                                                                    "id": "isPlayerOnlineByName",
+                                                                                                                    "contents": [
+                                                                                                                        "{args.1}"
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            [
+                                                                                                                {
+                                                                                                                    "id": "getPlayer",
+                                                                                                                    "contents": [
+                                                                                                                        "{args.1}",
+                                                                                                                        "player"
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "sendMessage",
+                                                                                                                    "contents": [
+                                                                                                                        "player",
+                                                                                                                        "§a{target.name} gave you §2$§a{args.2}."
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "sendMessage",
+                                                                                                        "contents": [
+                                                                                                            "target",
+                                                                                                            "§aYou gave §2$§a{args.2} to {args.1}."
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "saveConfig",
+                                                                                                        "contents": [
+                                                                                                            "money"
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "save",
+                                                                                                        "contents": []
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "id": "exit",
+                                                                                                        "contents": []
+                                                                                                    }
+                                                                                                ]
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "id": "else",
+                                                                                "contents": [
+                                                                                    {
+                                                                                        "id": "sendMessage",
+                                                                                        "contents": [
+                                                                                            "target",
+                                                                                            "§cUse: \/econ give {args.1} <amount>"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "id": "exit",
+                                                                                        "contents": []
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "else",
+                                                                    "contents": [
+                                                                        {
+                                                                            "id": "sendMessage",
+                                                                            "contents": [
+                                                                                "target",
+                                                                                "§cThere is no player with the name {args.1} in the database."
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": "exit",
+                                                                            "contents": []
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "else",
+                                                        "contents": [
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§cUse: \/econ give <user> <amount>"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "exit",
+                                                                "contents": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        {
+                                            "id": "else",
+                                            "contents": [
+                                                {
+                                                    "id": "sendMessage",
+                                                    "contents": [
+                                                        "target",
+                                                        "§cOperator commands are disabled on this server."
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "exit",
+                                                    "contents": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§cYou do not have permission to use this command."
+                                        ]
+                                    },
+                                    {
+                                        "id": "exit",
+                                        "contents": []
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "elseif",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{args.0}",
+                                    0,
+                                    "take"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "isOp",
+                                            "contents": [
+                                                "target"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "if",
+                                            "contents": [
+                                                [
+                                                    {
+                                                        "id": "comparisonString",
+                                                        "contents": [
+                                                            "{econfig.op_commands}",
+                                                            0,
+                                                            "true"
+                                                        ]
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "id": "if",
+                                                        "contents": [
+                                                            [
+                                                                {
+                                                                    "id": "existsListVariableKey",
+                                                                    "contents": [
+                                                                        "args",
+                                                                        "1",
+                                                                        true
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            [
+                                                                {
+                                                                    "id": "if",
+                                                                    "contents": [
+                                                                        [
+                                                                            {
+                                                                                "id": "existsConfig",
+                                                                                "contents": [
+                                                                                    "money",
+                                                                                    "{args.1}"
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        [
+                                                                            {
+                                                                                "id": "if",
+                                                                                "contents": [
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "existsListVariableKey",
+                                                                                            "contents": [
+                                                                                                "args",
+                                                                                                "2",
+                                                                                                true
+                                                                                            ]
+                                                                                        }
+                                                                                    ],
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "if",
+                                                                                            "contents": [
+                                                                                                [
+                                                                                                    {
+                                                                                                        "id": "comparisonNumber",
+                                                                                                        "contents": [
+                                                                                                            "{money.{args.1}}",
+                                                                                                            4,
+                                                                                                            "{args.2}"
+                                                                                                        ]
+                                                                                                    }
+                                                                                                ],
+                                                                                                [
+                                                                                                    {
+                                                                                                        "id": "if",
+                                                                                                        "contents": [
+                                                                                                            [
+                                                                                                                {
+                                                                                                                    "id": "comparisonNumber",
+                                                                                                                    "contents": [
+                                                                                                                        "{args.2}",
+                                                                                                                        0,
+                                                                                                                        "{args.2}"
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            [
+                                                                                                                {
+                                                                                                                    "id": "fourArithmeticOperations",
+                                                                                                                    "contents": [
+                                                                                                                        "{money.{args.1}}",
+                                                                                                                        1,
+                                                                                                                        "{args.2}",
+                                                                                                                        "newmoney"
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "setConfig",
+                                                                                                                    "contents": [
+                                                                                                                        "money",
+                                                                                                                        "{args.1}",
+                                                                                                                        "{newmoney}"
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "if",
+                                                                                                                    "contents": [
+                                                                                                                        [
+                                                                                                                            {
+                                                                                                                                "id": "isPlayerOnlineByName",
+                                                                                                                                "contents": [
+                                                                                                                                    "{args.1}"
+                                                                                                                                ]
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        [
+                                                                                                                            {
+                                                                                                                                "id": "getPlayer",
+                                                                                                                                "contents": [
+                                                                                                                                    "{args.1}",
+                                                                                                                                    "player"
+                                                                                                                                ]
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "id": "sendMessage",
+                                                                                                                                "contents": [
+                                                                                                                                    "player",
+                                                                                                                                    "§a{target.name} take you §2$§a{args.2}."
+                                                                                                                                ]
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "sendMessage",
+                                                                                                                    "contents": [
+                                                                                                                        "target",
+                                                                                                                        "§aYou take §2$§a{args.2} to {args.1}."
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "saveConfig",
+                                                                                                                    "contents": [
+                                                                                                                        "money"
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "save",
+                                                                                                                    "contents": []
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "exit",
+                                                                                                                    "contents": []
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        ]
+                                                                                                    }
+                                                                                                ]
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "else",
+                                                                                            "contents": [
+                                                                                                {
+                                                                                                    "id": "sendMessage",
+                                                                                                    "contents": [
+                                                                                                        "target",
+                                                                                                        "§cPlayer {args.1} doesn't have enough money"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": "exit",
+                                                                                                    "contents": []
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "id": "else",
+                                                                                "contents": [
+                                                                                    {
+                                                                                        "id": "sendMessage",
+                                                                                        "contents": [
+                                                                                            "target",
+                                                                                            "§cUse: \/econ take {args.1} <amount>"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "id": "exit",
+                                                                                        "contents": []
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "else",
+                                                                    "contents": [
+                                                                        {
+                                                                            "id": "sendMessage",
+                                                                            "contents": [
+                                                                                "target",
+                                                                                "§cThere is no player with the name {args.1} in the database."
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": "exit",
+                                                                            "contents": []
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "else",
+                                                        "contents": [
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§cUse: \/econ take <user> <amount>"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "exit",
+                                                                "contents": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        {
+                                            "id": "else",
+                                            "contents": [
+                                                {
+                                                    "id": "sendMessage",
+                                                    "contents": [
+                                                        "target",
+                                                        "§cOperator commands are disabled on this server."
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "exit",
+                                                    "contents": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§cYou do not have permission to use this command."
+                                        ]
+                                    },
+                                    {
+                                        "id": "exit",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "hasPermission",
+                                            "contents": [
+                                                "target",
+                                                "econmf.op"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "if",
+                                            "contents": [
+                                                [
+                                                    {
+                                                        "id": "comparisonString",
+                                                        "contents": [
+                                                            "{econfig.op_commands}",
+                                                            0,
+                                                            "true"
+                                                        ]
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "id": "if",
+                                                        "contents": [
+                                                            [
+                                                                {
+                                                                    "id": "existsListVariableKey",
+                                                                    "contents": [
+                                                                        "args",
+                                                                        "1",
+                                                                        true
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            [
+                                                                {
+                                                                    "id": "if",
+                                                                    "contents": [
+                                                                        [
+                                                                            {
+                                                                                "id": "existsConfig",
+                                                                                "contents": [
+                                                                                    "money",
+                                                                                    "{args.1}"
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        [
+                                                                            {
+                                                                                "id": "if",
+                                                                                "contents": [
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "existsListVariableKey",
+                                                                                            "contents": [
+                                                                                                "args",
+                                                                                                "2",
+                                                                                                true
+                                                                                            ]
+                                                                                        }
+                                                                                    ],
+                                                                                    [
+                                                                                        {
+                                                                                            "id": "if",
+                                                                                            "contents": [
+                                                                                                [
+                                                                                                    {
+                                                                                                        "id": "comparisonNumber",
+                                                                                                        "contents": [
+                                                                                                            "{money.{args.1}}",
+                                                                                                            4,
+                                                                                                            "{args.2}"
+                                                                                                        ]
+                                                                                                    }
+                                                                                                ],
+                                                                                                [
+                                                                                                    {
+                                                                                                        "id": "if",
+                                                                                                        "contents": [
+                                                                                                            [
+                                                                                                                {
+                                                                                                                    "id": "comparisonNumber",
+                                                                                                                    "contents": [
+                                                                                                                        "{args.2}",
+                                                                                                                        0,
+                                                                                                                        "{args.2}"
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            [
+                                                                                                                {
+                                                                                                                    "id": "fourArithmeticOperations",
+                                                                                                                    "contents": [
+                                                                                                                        "{money.{args.1}}",
+                                                                                                                        1,
+                                                                                                                        "{args.2}",
+                                                                                                                        "newmoney"
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "setConfig",
+                                                                                                                    "contents": [
+                                                                                                                        "money",
+                                                                                                                        "{args.1}",
+                                                                                                                        "{newmoney}"
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "if",
+                                                                                                                    "contents": [
+                                                                                                                        [
+                                                                                                                            {
+                                                                                                                                "id": "isPlayerOnlineByName",
+                                                                                                                                "contents": [
+                                                                                                                                    "{args.1}"
+                                                                                                                                ]
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        [
+                                                                                                                            {
+                                                                                                                                "id": "getPlayer",
+                                                                                                                                "contents": [
+                                                                                                                                    "{args.1}",
+                                                                                                                                    "player"
+                                                                                                                                ]
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "id": "sendMessage",
+                                                                                                                                "contents": [
+                                                                                                                                    "player",
+                                                                                                                                    "§a{target.name} take you §2$§a{args.2}."
+                                                                                                                                ]
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "sendMessage",
+                                                                                                                    "contents": [
+                                                                                                                        "target",
+                                                                                                                        "§aYou take §2$§a{args.2} to {args.1}."
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "saveConfig",
+                                                                                                                    "contents": [
+                                                                                                                        "money"
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "save",
+                                                                                                                    "contents": []
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "id": "exit",
+                                                                                                                    "contents": []
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        ]
+                                                                                                    }
+                                                                                                ]
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "else",
+                                                                                            "contents": [
+                                                                                                {
+                                                                                                    "id": "sendMessage",
+                                                                                                    "contents": [
+                                                                                                        "target",
+                                                                                                        "§cPlayer {args.1} doesn't have enough money"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "id": "exit",
+                                                                                                    "contents": []
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "id": "else",
+                                                                                "contents": [
+                                                                                    {
+                                                                                        "id": "sendMessage",
+                                                                                        "contents": [
+                                                                                            "target",
+                                                                                            "§cUse: \/econ take {args.1} <amount>"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "id": "exit",
+                                                                                        "contents": []
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "id": "else",
+                                                                    "contents": [
+                                                                        {
+                                                                            "id": "sendMessage",
+                                                                            "contents": [
+                                                                                "target",
+                                                                                "§cThere is no player with the name {args.1} in the database."
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": "exit",
+                                                                            "contents": []
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "else",
+                                                        "contents": [
+                                                            {
+                                                                "id": "sendMessage",
+                                                                "contents": [
+                                                                    "target",
+                                                                    "§cUse: \/econ take <user> <amount>"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "id": "exit",
+                                                                "contents": []
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        {
+                                            "id": "else",
+                                            "contents": [
+                                                {
+                                                    "id": "sendMessage",
+                                                    "contents": [
+                                                        "target",
+                                                        "§cOperator commands are disabled on this server."
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "exit",
+                                                    "contents": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§cYou do not have permission to use this command."
+                                        ]
+                                    },
+                                    {
+                                        "id": "exit",
+                                        "contents": []
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "elseif",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{args.0}",
+                                    0,
+                                    "bank"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "sendMessage",
+                                "contents": [
+                                    "target",
+                                    "§cNot added at the moment (I'm sorry, will be in the next version of the add-on)"
+                                ]
+                            },
+                            {
+                                "id": "exit",
+                                "contents": []
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "elseif",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{args.0}",
+                                    0,
+                                    "config"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "comparisonString",
+                                            "contents": [
+                                                "{econfig.config_form}",
+                                                0,
+                                                "true"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "sendForm",
+                                            "contents": [
+                                                "target",
+                                                "econfig"
+                                            ]
+                                        },
+                                        {
+                                            "id": "exit",
+                                            "contents": []
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§cThe configuration menu is disabled on this server."
+                                        ]
+                                    },
+                                    {
+                                        "id": "exit",
+                                        "contents": []
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "else",
+                    "contents": [
+                        {
+                            "id": "sendMessage",
+                            "contents": [
+                                "target",
+                                "§cUse: \/econ help"
+                            ]
+                        },
+                        {
+                            "id": "exit",
+                            "contents": []
+                        }
+                    ]
+                }
+            ],
+            "triggers": [
+                {
+                    "type": "command",
+                    "values": {
+                        "command": "econ",
+                        "full": "econ"
+                    }
+                }
+            ],
+            "target": {
+                "type": 1,
+                "options": []
+            },
+            "arguments": [],
+            "returnValues": [],
+            "dependency": {
+                "addon": [],
+                "plugin": []
+            }
+        },
+        {
+            "name": "config",
+            "group": "EconMF\/forms",
+            "plugin_version": "3.3.0",
+            "author": "NecroMancer8104",
+            "enabled": true,
+            "actions": [
+                {
+                    "id": "createConfig",
+                    "contents": [
+                        "econfig",
+                        "econfig"
+                    ]
+                },
+                {
+                    "id": "if",
+                    "contents": [
+                        [
+                            {
+                                "id": "not",
+                                "contents": [
+                                    {
+                                        "id": "comparisonString",
+                                        "contents": [
+                                            "{form.data[0]}",
+                                            0,
+                                            "{econfig.default_join_money}"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "setConfig",
+                                "contents": [
+                                    "econfig",
+                                    "default_join_money",
+                                    "{form.data[0]}"
+                                ]
+                            },
+                            {
+                                "id": "sendMessage",
+                                "contents": [
+                                    "target",
+                                    "§aWelcome money set to §2$§a{form.data[0]}."
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "if",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{form.data[1]}",
+                                    0,
+                                    "true"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "comparisonString",
+                                            "contents": [
+                                                "{econfig.allow_offline_payments}",
+                                                0,
+                                                "true"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "setConfig",
+                                            "contents": [
+                                                "econfig",
+                                                "allow_offline_payments",
+                                                "false"
+                                            ]
+                                        },
+                                        {
+                                            "id": "sendMessage",
+                                            "contents": [
+                                                "target",
+                                                "§aAllow offline payments set to false."
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "setConfig",
+                                        "contents": [
+                                            "econfig",
+                                            "allow_offline_payments",
+                                            "true"
+                                        ]
+                                    },
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§aAllow offline payments set to true."
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "if",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{form.data[2]}",
+                                    0,
+                                    "true"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "comparisonString",
+                                            "contents": [
+                                                "{econfig.bank_form}",
+                                                0,
+                                                "true"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "setConfig",
+                                            "contents": [
+                                                "econfig",
+                                                "bank_form",
+                                                "false"
+                                            ]
+                                        },
+                                        {
+                                            "id": "sendMessage",
+                                            "contents": [
+                                                "target",
+                                                "§aBank form set to false."
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "setConfig",
+                                        "contents": [
+                                            "econfig",
+                                            "bank_form",
+                                            "true"
+                                        ]
+                                    },
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§aBank form set to true."
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "if",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{form.data[3]}",
+                                    0,
+                                    "true"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "comparisonString",
+                                            "contents": [
+                                                "{econfig.allow_balance_view}",
+                                                0,
+                                                "true"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "setConfig",
+                                            "contents": [
+                                                "econfig",
+                                                "allow_balance_view",
+                                                "false"
+                                            ]
+                                        },
+                                        {
+                                            "id": "sendMessage",
+                                            "contents": [
+                                                "target",
+                                                "§aAllow balance view set to false."
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "setConfig",
+                                        "contents": [
+                                            "econfig",
+                                            "allow_balance_view",
+                                            "true"
+                                        ]
+                                    },
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§aAllow balance view set to true."
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "if",
+                    "contents": [
+                        [
+                            {
+                                "id": "comparisonString",
+                                "contents": [
+                                    "{form.data[4]}",
+                                    0,
+                                    "true"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "comparisonString",
+                                            "contents": [
+                                                "{econfig.op_commands}",
+                                                0,
+                                                "true"
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "setConfig",
+                                            "contents": [
+                                                "econfig",
+                                                "op_commands",
+                                                "false"
+                                            ]
+                                        },
+                                        {
+                                            "id": "sendMessage",
+                                            "contents": [
+                                                "target",
+                                                "§aOP commands set to false."
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "else",
+                                "contents": [
+                                    {
+                                        "id": "setConfig",
+                                        "contents": [
+                                            "econfig",
+                                            "op_commands",
+                                            "true"
+                                        ]
+                                    },
+                                    {
+                                        "id": "sendMessage",
+                                        "contents": [
+                                            "target",
+                                            "§aOP commands set to true."
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "sendMessage",
+                    "contents": [
+                        "target",
+                        "§a[EconMF] Configuration edited successfully."
+                    ]
+                },
+                {
+                    "id": "saveConfig",
+                    "contents": [
+                        "econfig"
+                    ]
+                },
+                {
+                    "id": "save",
+                    "contents": []
+                },
+                {
+                    "id": "exit",
+                    "contents": []
+                }
+            ],
+            "triggers": [
+                {
+                    "type": "form",
+                    "values": {
+                        "formName": "econfig",
+                        "extraData": ""
+                    }
+                }
+            ],
+            "target": {
+                "type": 1,
+                "options": []
+            },
+            "arguments": [],
+            "returnValues": [],
+            "dependency": {
+                "addon": [],
+                "plugin": []
+            }
+        },
+        {
+            "name": "database",
+            "group": "EconMF",
+            "plugin_version": "3.3.0",
+            "author": "NecroMancer8104",
+            "enabled": true,
+            "actions": [
+                {
+                    "id": "if",
+                    "contents": [
+                        [
+                            {
+                                "id": "existsConfigFile",
+                                "contents": [
+                                    "econfig"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "sendMessage",
+                                "contents": [
+                                    "target",
+                                    "§c[EconMF] The system is currently active."
+                                ]
+                            },
+                            {
+                                "id": "exit",
+                                "contents": []
+                            }
+                        ]
+                    ]
+                },
+                {
+                    "id": "createConfig",
+                    "contents": [
+                        "econfig",
+                        "econfig"
+                    ]
+                },
+                {
+                    "id": "setConfig",
+                    "contents": [
+                        "econfig",
+                        "default_join_money",
+                        "1000"
+                    ]
+                },
+                {
+                    "id": "setConfig",
+                    "contents": [
+                        "econfig",
+                        "allow_offline_payments",
+                        "true"
+                    ]
+                },
+                {
+                    "id": "setConfig",
+                    "contents": [
+                        "econfig",
+                        "bank_form",
+                        "false"
+                    ]
+                },
+                {
+                    "id": "setConfig",
+                    "contents": [
+                        "econfig",
+                        "allow_balance_view",
+                        "true"
+                    ]
+                },
+                {
+                    "id": "setConfig",
+                    "contents": [
+                        "econfig",
+                        "op_commands",
+                        "true"
+                    ]
+                },
+                {
+                    "id": "setConfig",
+                    "contents": [
+                        "econfig",
+                        "config_form",
+                        "true"
+                    ]
+                },
+                {
+                    "id": "sendMessage",
+                    "contents": [
+                        "target",
+                        "§a[EconMF] System activated. EconMF config file created in: plugin_data\/Mineflow\/configs\/econfig"
+                    ]
+                },
+                {
+                    "id": "sendMessage",
+                    "contents": [
+                        "target",
+                        "§e[EconMF] Warning! Deleting the econfig file may result in system breakage."
+                    ]
+                },
+                {
+                    "id": "saveConfig",
+                    "contents": [
+                        "econfig"
+                    ]
+                },
+                {
+                    "id": "save",
+                    "contents": []
+                }
+            ],
+            "triggers": [
+                {
+                    "type": "command",
+                    "values": {
+                        "command": "econfig",
+                        "full": "econfig"
+                    }
+                }
+            ],
+            "target": {
+                "type": 1,
+                "options": []
+            },
+            "arguments": [],
+            "returnValues": [],
+            "dependency": {
+                "addon": [],
+                "plugin": []
+            }
+        },
+        {
+            "name": "join",
+            "group": "EconMF",
+            "plugin_version": "3.3.0",
+            "author": "NecroMancer8104",
+            "enabled": true,
+            "actions": [
+                {
+                    "id": "if",
+                    "contents": [
+                        [
+                            {
+                                "id": "existsConfigFile",
+                                "contents": [
+                                    "econfig"
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "id": "createConfig",
+                                "contents": [
+                                    "money",
+                                    "money"
+                                ]
+                            },
+                            {
+                                "id": "createConfig",
+                                "contents": [
+                                    "econfig",
+                                    "econfig"
+                                ]
+                            },
+                            {
+                                "id": "if",
+                                "contents": [
+                                    [
+                                        {
+                                            "id": "not",
+                                            "contents": [
+                                                {
+                                                    "id": "existsConfig",
+                                                    "contents": [
+                                                        "money",
+                                                        "{target.name}"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "id": "setConfig",
+                                            "contents": [
+                                                "money",
+                                                "{target.name}",
+                                                "{econfig.default_join_money}"
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            },
+                            {
+                                "id": "saveConfig",
+                                "contents": [
+                                    "money"
+                                ]
+                            },
+                            {
+                                "id": "save",
+                                "contents": []
+                            }
+                        ]
+                    ]
+                }
+            ],
+            "triggers": [
+                {
+                    "type": "event",
+                    "values": {
+                        "event": "PlayerJoinEvent"
+                    }
+                }
+            ],
+            "target": {
+                "type": 1,
+                "options": []
+            },
+            "arguments": [],
+            "returnValues": [],
+            "dependency": {
+                "addon": [],
+                "plugin": []
+            }
+        }
+    ],
+    "commands": {
+        "econ": {
+            "command": "econ",
+            "permission": "mineflow.customcommand.true",
+            "description": "Command of the economy.",
+            "subcommands": []
+        },
+        "econfig": {
+            "command": "econfig",
+            "permission": "mineflow.customcommand.op",
+            "description": "Create the EconMF configuration file.",
+            "subcommands": []
+        }
+    },
+    "forms": {
+        "econfig": {
+            "type": "custom_form",
+            "title": "econfig",
+            "content": [
+                {
+                    "type": "input",
+                    "text": "Default join money:",
+                    "placeholder": "1000 by default",
+                    "default": "{econfig.default_join_money}",
+                    "mineflow": {
+                        "type": "number",
+                        "required": true,
+                        "min": 1,
+                        "max": 1000000,
+                        "excludes": [],
+                        "placeholder": {
+                            "min": "1",
+                            "max": "1000000"
+                        }
+                    }
+                },
+                {
+                    "type": "toggle",
+                    "text": "Allow offline payments. Status: {econfig.allow_offline_payments}.",
+                    "default": false
+                },
+                {
+                    "type": "toggle",
+                    "text": "Bank form (NOT ADDED). Status: {econfig.bank_form}.",
+                    "default": false
+                },
+                {
+                    "type": "toggle",
+                    "text": "Allow balance view. Status: {econfig.allow_balance_view}.",
+                    "default": false
+                },
+                {
+                    "type": "toggle",
+                    "text": "OP commands. Status: {econfig.op_commands}.",
+                    "default": false
+                },
+                {
+                    "type": "label",
+                    "text": "§eWarning! Don't touch any setting you don't know what it does."
+                }
+            ]
+        }
+    },
+    "configs": []
+}
