@@ -7,7 +7,7 @@ default_join_money: 1000
 allow_offline_payments: "true"
 # Allow payments to offline users. Set false to disable
 bank_form: "true"
-# Enable the use of the /econ bank command to open the bank form. Set false to disable
+# Enable the use of the /econ bank command to open the bank form. Set false to disable (NOT ADDED AT THE MOMENT)
 allow_balance_view: "true"
 # Allow players to see each other's balances using the /econ bal command. Set false to disable
 op_commands: "true"
