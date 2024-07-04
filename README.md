@@ -23,10 +23,10 @@ The largest and most complex economic system created using the Mineflow v3.3.0 f
 - /econ help ~ Discover the EconMF commands.
 - /econ bank ~ Open the form to use EconMF in a more interactive way (configurable).
 - /econ bal [user] ~ See your balance or the balance of others (configurable).
-- /econ pay <user> <amount> ~ Pay a player a specific amount of money (configurable).
+- /econ pay (user) (amount) ~ Pay a player a specific amount of money (configurable).
 [OP Commands]
-- /econ give <user> <amount> ~ Give a player a specific amount of money.
-- /econ take <user> <amount> ~ Take a specific amount of money from a player.
+- /econ give (user) (amount) ~ Give a player a specific amount of money.
+- /econ take (user) (amount) ~ Take a specific amount of money from a player.
 - /econ config ~ Change the default settings of the EconMF. Please find out what each part of the configuration is for before editing it.
 
 # For other Mineflow developers
