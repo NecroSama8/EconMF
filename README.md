@@ -39,4 +39,6 @@ There are instructions in the file [formfdevs.md](https://github.com/NecroSama8/
 - Add a leaderboard that shows the top.
 - Add a json UI to forms to add style.
 
-By Necro :).
+# Credits
+[aieuo](https://github.com/aieuo) - Mineflow plugin creator.
+[NecroSama8](https://github.com/NecroSama8) - Add-on and system developer.
