@@ -31,7 +31,7 @@ The largest and most complex economic system created using the Mineflow v3.3.0 f
 - /econ config ~ Change the default settings of the EconMF. Please find out what each part of the configuration is for before editing it.
 
 # For other Mineflow developers
-There are instructions in the file formfdevs.md if you want to use the system API ;).
+There are instructions in the file [formfdevs.md](https://github.com/NecroSama8/EconMF/blob/main/formfdevs.md) if you want to use the system API ;).
 
 # Plans for future updates
 - Create mechanisms compatible with this system.
