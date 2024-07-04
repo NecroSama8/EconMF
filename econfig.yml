@@ -1,0 +1,14 @@
+---
+# econfig.yml example
+# If you want, you can download it and place it directly in the directory: plugin_data/Mineflow/configs
+default_join_money: 1000
+# The default money each player will have when joining for the first time. You can put the value you want
+allow_offline_payments: "true"
+# Allow payments to offline users. Set false to disable
+bank_form: "true"
+# Enable the use of the /econ bank command to open the bank form. Set false to disable
+allow_balance_view: "true"
+# Allow players to see each other's balances using the /econ bal command. Set false to disable
+op_commands: "true"
+# Enable the use of operator commands (/econ give and /econ take). Set false to disable
+...
