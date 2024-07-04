@@ -12,4 +12,6 @@ allow_balance_view: "true"
 # Allow players to see each other's balances using the /econ bal command. Set false to disable
 op_commands: "true"
 # Enable the use of operator commands (/econ give and /econ take). Set false to disable
+config_form: "true"
+# Enable the use of the /econ config command for operators to open the settings form. Set false to disable
 ...
