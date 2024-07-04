@@ -1,5 +1,6 @@
 ---
 # econfig.yml example
+# If you are going to edit the configuration directly from the file, I recommend performing a restart so that the changes are saved correctly. If you use the settings menu it is not necessary to do this
 # If you want, you can download it and place it directly in the directory: plugin_data/Mineflow/configs
 default_join_money: 1000
 # The default money each player will have when joining for the first time. You can put the value you want
