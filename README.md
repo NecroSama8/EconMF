@@ -35,7 +35,7 @@ A complex economic system created using the Mineflow v3.3.0 for PMMP 5.
 There are instructions in the file [formfdevs.md](https://github.com/NecroSama8/EconMF/blob/main/formfdevs.md) if you want to use the system API ;).
 
 # Plans for future updates
-- Make extentions.
+- Make extensions.
 - Create mechanisms compatible with this system.
 - Add settings for messages and command names.
 - Add a leaderboard that shows the top.
