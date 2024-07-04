@@ -16,7 +16,8 @@ The largest and most complex economic system created using the Mineflow v3.3.0 f
 2. Import the json file into the directory: plugin data/Mineflow/imports.
 3. Import the recipes using the Mineflow interface.
 4. Use the "/econfig" command to create the EconMF configuration file.
-5. Enjoy it :).
+5. Restart the server.
+6. Enjoy it :).
 
 # Commands
 - /econ ~ Basic command of the EconMF.
