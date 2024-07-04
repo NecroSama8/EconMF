@@ -1,13 +1,13 @@
-# EconMF [Under development] [No release yet]
-The largest and most complex economic system created using the Mineflow v3.3.0 for PMMP 5.
+# EconMF [First Release]
+A complex economic system created using the Mineflow v3.3.0 for PMMP 5.
 
 **Note: If you want to edit the configurations, I recommend you first see the [econfig.yml](https://github.com/NecroSama8/EconMF/blob/main/econfig.yml) example left in the repository**
 
 # Features
-- Easy to use either by commands or forms.
+- Easy to use either by commands.
 - Configuration file that stores the data.
 - Completely custom configuration.
-- Interactive bank.
+- Interactive bank (not added).
 - Same features of the Bedrock Economy or the defunct EconomyAPI.
 - Versatility for Mineflow developers.
 
@@ -22,7 +22,7 @@ The largest and most complex economic system created using the Mineflow v3.3.0 f
 # Commands
 - /econ ~ Basic command of the EconMF.
 - /econ help ~ Discover the EconMF commands.
-- /econ bank ~ Open the form to use EconMF in a more interactive way (configurable).
+- /econ bank ~ Open the form to use EconMF in a more interactive way (configurable). <- NOT ADDED
 - /econ bal [user] ~ See your balance or the balance of others (configurable).
 - /econ pay (user) (amount) ~ Pay a player a specific amount of money (configurable).
 **OP Commands**
@@ -35,6 +35,7 @@ The largest and most complex economic system created using the Mineflow v3.3.0 f
 There are instructions in the file [formfdevs.md](https://github.com/NecroSama8/EconMF/blob/main/formfdevs.md) if you want to use the system API ;).
 
 # Plans for future updates
+- Make extentions.
 - Create mechanisms compatible with this system.
 - Add settings for messages and command names.
 - Add a leaderboard that shows the top.
