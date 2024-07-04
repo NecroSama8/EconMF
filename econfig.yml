@@ -13,5 +13,5 @@ allow_balance_view: "true"
 op_commands: "true"
 # Enable the use of operator commands (/econ give and /econ take). Set false to disable
 config_form: "true"
-# Enable the use of the /econ config command for operators to open the settings form. Set false to disable
+# Enable the use of the /econ config command for operators to open the settings form and edit this configs. Set false to disable
 ...
