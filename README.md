@@ -1,7 +1,7 @@
 # EconMF [Under development] [No release yet]
 The largest and most complex economic system created using the Mineflow v3.3.0 for PMMP 5.
 
-**Note: If you want to edit the configurations, I recommend you first see the _econfig.yml_ example left in the repository**
+**Note: If you want to edit the configurations, I recommend you first see the [econfig.yml](https://github.com/NecroSama8/EconMF/blob/main/econfig.yml) example left in the repository**
 
 # Features
 - Easy to use either by commands or forms.
