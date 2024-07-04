@@ -33,6 +33,8 @@ The largest and most complex economic system created using the Mineflow v3.3.0 f
 There are instructions in the file formfdevs.md if you want to use the system API ;).
 
 # Plans for future updates
+- Create mechanisms compatible with this system.
+- Add settings for messages and command names.
 - Add a leaderboard that shows the top.
 - Add a json UI to forms to add style.
 
